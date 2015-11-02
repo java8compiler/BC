@@ -24,7 +24,7 @@ public class LevelSelectScreen implements Screen, InputProcessor {
     private MenuScreen menuScreen;
     private Gui gui;
     private  float sY = 100;
-    private float X = -50, Y = 100;
+    private float Y = 100;
     private float step = 20;
     private Action action = new Action() {
         @Override
@@ -53,7 +53,8 @@ public class LevelSelectScreen implements Screen, InputProcessor {
         int count = 0;
         for (int i = 0; i < file.list().length; i++){
             if(file.list()[i].matches("\\w+\\.level") && (new FileInputStream(BattleCity.Levels+file.list()[i]).available()) == 10000){
-                TButton button = new TButton(X, Y, file.list()[i]);
+                BattleCity.glyphLayout.setText(TButton.font, file.list()[i]);
+                TButton button = new TButton(-3-BattleCity.glyphLayout.width/2, Y, file.list()[i]);
                 button.setAction(action);
                 gui.add(button);
                 Y += button.getBound().getHeight()+10;
