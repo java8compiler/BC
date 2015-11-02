@@ -1,0 +1,14 @@
+{
+  "Tank":{
+    "Speed": 1
+  },
+  "Bullet": {
+    "Speed": 2
+  },
+  "Animation":{
+    "Speed": 50
+  },
+  "Sound":{
+    "Volume": 0.3
+  }
+}

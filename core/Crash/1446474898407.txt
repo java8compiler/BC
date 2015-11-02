@@ -1,0 +1,11 @@
+1.8.0_60
+Windows 7
+amd64
+java.lang.IllegalStateException: SpriteBatch.begin must be called before draw.
+	at com.badlogic.gdx.graphics.g2d.SpriteBatch.draw(SpriteBatch.java:556)
+	at com.badlogic.gdx.graphics.g2d.Sprite.draw(Sprite.java:515)
+	at city.GuiRenderer.renderer(GuiRenderer.java:31)
+	at city.Screens.GameContainer.render(GameContainer.java:63)
+	at com.badlogic.gdx.Game.render(Game.java:46)
+	at com.badlogic.gdx.backends.lwjgl.LwjglApplication.mainLoop(LwjglApplication.java:215)
+	at com.badlogic.gdx.backends.lwjgl.LwjglApplication$1.run(LwjglApplication.java:120)
