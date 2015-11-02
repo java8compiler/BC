@@ -64,3 +64,13 @@ build/
 .DS_Store
 /server
 /server/src
+/gradle
+/0001-.patch
+/build.gradle
+/gradle.properties
+/gradlew
+/gradlew.bat
+/Level
+/Level.txt
+/LICENSE
+/settings.gradle
