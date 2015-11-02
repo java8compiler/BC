@@ -24,12 +24,12 @@ public class BattleCity extends Game {
 	public static GlyphLayout glyphLayout;
 	public static JSONObject jsonObject;
 
-	public static String Errors = "Crash\\";
-	public static String Levels = "Levels\\";
-	public static String Assets = "Assets\\";
-	public static String Sounds = "Sounds\\";
-	public static String Configs = "Configs\\";
-	public static String Logs = "Logs\\";
+	public static String Errors = "Crash/";
+	public static String Levels = "Levels/";
+	public static String Assets = "Assets/";
+	public static String Sounds = "Sounds/";
+	public static String Configs = "Configs/";
+	public static String Logs = "Logs/";
 
 	@Override
 	public void create (){
