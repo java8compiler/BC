@@ -1,14 +1,14 @@
-package city.Json.Entity;
+package city.Entities;
 
+import city.Pos;
 import city.World;
 
 public class Entity {
-    private float X,Y;
+    private Pos pos;
     private byte id;
 
     protected Entity(float x, float y, byte id){
-        X = x;
-        Y = y;
+        pos = new Pos(x, y);
         this.id = id;
     }
 
@@ -18,6 +18,5 @@ public class Entity {
 
     public byte getId(){return this.id;}
 
-    public float getX(){return X;}
-    public float getY(){return Y;}
+    public Pos getPos(){return this.pos;}
 }

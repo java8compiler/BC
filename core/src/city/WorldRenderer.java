@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Tiles.Tile;
 
-import city.Json.Entity.Entity;
+import city.Entities.Entity;
 import city.Loaders.TextureLoader;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;

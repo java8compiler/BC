@@ -4,7 +4,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import city.BattleCity;
-import city.Settings;
+import city.Utils.Settings;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

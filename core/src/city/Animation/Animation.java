@@ -1,4 +1,4 @@
-package city;
+package city.Animation;
 
 public class Animation {
     private long period;

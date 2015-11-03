@@ -28,6 +28,9 @@ public class Bullet {
 		pos.Y+=dy;
 		tilePos = new Pos(pos.X, pos.Y);
 		tilePos.TilePos();
+		if(world.getPlayer().getBound().contains(pos.X, pos.Y)){
+			world.getPlayer().setDamage(1);
+		}
 		if(world.getTile(tilePos) != null && world.getTile(tilePos).isBulletCollision()){
 			Tile tile = world.getTile(tilePos);
 			SoundLoader.explosion.play(SoundLoader.Volume);

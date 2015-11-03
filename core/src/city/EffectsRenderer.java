@@ -2,6 +2,9 @@ package city;
 
 import java.util.ArrayList;
 
+import city.Animation.BigExplosion;
+import city.Animation.Effects;
+import city.Animation.TileExplosion;
 import city.Screens.GameContainer;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

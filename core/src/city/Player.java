@@ -3,11 +3,12 @@ package city;
 import city.Loaders.SoundLoader;
 import city.Loaders.TextureLoader;
 import city.Screens.GameContainer;
+import city.Utils.Operation;
+import city.Utils.Timer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import java.util.Random;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Player {
 	private GameContainer gc;
@@ -18,31 +19,29 @@ public class Player {
 	public float speed = const_speed;
 	private int inTileY;
 	private Pos lastPos;
-	private int reload = 0;
-	private static int timeToReload = 30;
-	private boolean isReload = false;
+	private static long timeToReload = 300;
 	private float health = 5.5f;
 	public float maxHealth = 5.5f;
+	private Rectangle bound;
+	private boolean isReload;
 	
 	public Player(int x, int y, GameContainer gc){
 		this.gc = gc;
 		X = x;
 		Y = y;
+		isReload = false;
 		lastPos = new Pos(X, Y);
+		bound = new Rectangle(X, Y, 13, 13);
 	}
 	
 	public void update(){
-		Collision();
-		if(isReload){
-			reload--;
-		}
-		if(reload == 0) isReload = false;
+		Collision(gc.world);
+		bound.setPosition(X, Y);
 	}
 	
-	public void Collision(){
+	public void Collision(World world){
 		speed = const_speed;
 		Pos pos1 = null, pos2 = null, pos3 = null, pos4 = null, pos5 = null, pos6 = null, pos7 = null, pos8 =null;
-		
 		lastPos.X = X;
 		lastPos.Y = Y;
 		
@@ -50,7 +49,16 @@ public class Player {
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {direction = 0; move();} else
 		if(Gdx.input.isKeyPressed(Keys.UP)) {direction = 1; move();}else
 		if(Gdx.input.isKeyPressed(Keys.DOWN)) {direction = 3; move();}
-		if(Gdx.input.isKeyPressed(Keys.SPACE) && !isReload){boom(); reload = timeToReload; isReload = true;}
+		if(Gdx.input.isKeyPressed(Keys.SPACE) && !isReload){
+			boom();
+			isReload = true;
+			world.addTimer(new Timer(gc, timeToReload, new Operation() {
+				@Override
+				public void operation(GameContainer container) {
+					container.world.getPlayer().isReload = false;
+				}
+			}));
+		}
 		gc.camera.position.set(X, Y, 0);
 		
 		pos1 = new Pos(X, Y); pos1.TilePos();
@@ -88,10 +96,10 @@ public class Player {
 	
 	public void move(){
 		switch(direction){
-		case 0: X +=speed; break;
-		case 1: Y +=speed; break;
-		case 2: X -=speed; break;
-		case 3: Y -=speed; break;
+		case 0: X += speed; break;
+		case 1: Y += speed; break;
+		case 2: X -= speed; break;
+		case 3: Y -= speed; break;
 		}
 	}
 	
@@ -110,7 +118,13 @@ public class Player {
 	}
 
 	public void setDamage(float dmg){
+		if(dmg <= health){
+			health -= dmg;
+		}
+	}
 
+	public Rectangle getBound(){
+		return this.bound;
 	}
 
 }

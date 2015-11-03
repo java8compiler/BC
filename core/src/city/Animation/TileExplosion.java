@@ -1,5 +1,6 @@
-package city;
+package city.Animation;
 
+import city.BattleCity;
 import city.Loaders.TextureLoader;
 
 public class TileExplosion extends Effects {

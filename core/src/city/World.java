@@ -1,18 +1,14 @@
 package city;
+import Tiles.*;
+import city.Entities.Entity;
+import city.Screens.GameContainer;
+import city.Utils.Timer;
+import city.Utils.TimerStack;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Random;
-
-import Tiles.Brick;
-import Tiles.Leaf;
-import Tiles.Stone;
-import Tiles.Tile;
-import Tiles.Water;
-import city.Json.Entity.Entity;
-import city.Screens.CrashScreen;
-import city.Screens.GameContainer;
 
 public class World {
 	private Tile[][] tiles;
@@ -21,10 +17,14 @@ public class World {
 	private GameContainer gc;
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Entity> entities;
+	private Random random;
+	private TimerStack timerStack;
 	
 	public World(int sizeX, int sizeY, GameContainer gc){
 		bullets = new ArrayList<Bullet>();
 		entities = new ArrayList<Entity>();
+		random = new Random();
+		timerStack = new TimerStack();
 		this.gc = gc;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
@@ -33,7 +33,7 @@ public class World {
 	}
 	
 	public void generate() throws Exception{
-		Random r = new Random();
+		Random r = random;
 		Tile tile = null;
 		for(int x = 0; x < sizeX; x++){
 			for(int y = 0; y < sizeY; y++){
@@ -92,6 +92,7 @@ public class World {
 		for(int i = 0; i < entities.size(); i++){
 			entities.get(i).update(this);
 		}
+		timerStack.update();
 	}
 	
 	public Tile[][] geTiles(){
@@ -150,4 +151,8 @@ public class World {
 	
 	public int getSizeX() {return this.sizeX;}
 	public int getSizeY() {return this.sizeY;}
+
+	public void addTimer(Timer t){
+		timerStack.addTimer(t);
+	}
 }

@@ -4,7 +4,6 @@ import city.Json.JSONObject;
 import city.Loaders.SoundLoader;
 import city.Loaders.TextureLoader;
 import city.Screens.CrashScreen;
-import city.Screens.GameContainer;
 import city.Screens.MenuScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -40,7 +39,7 @@ public class BattleCity extends Game {
 			if(!log.isDirectory()){
 				log.mkdir();
 			}
-			System.setOut(new PrintStream(new FileOutputStream(Logs+System.currentTimeMillis()+".log")));
+			//System.setOut(new PrintStream(new FileOutputStream(Logs+System.currentTimeMillis()+".log")));
 			//Load Configs
 			file = new FileInputStream(Configs+"settings.json");
 			buffer = new byte[file.available()];

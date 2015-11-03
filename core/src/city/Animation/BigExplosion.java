@@ -1,8 +1,8 @@
-package city;
+package city.Animation;
 
 import city.Loaders.TextureLoader;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import city.Pos;
+import city.World;
 
 public class BigExplosion extends Effects {
     private byte size;

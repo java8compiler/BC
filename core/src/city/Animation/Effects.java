@@ -1,5 +1,6 @@
-package city;
+package city.Animation;
 
+import city.World;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -20,6 +21,7 @@ public class Effects extends Animation {
 	public void update(World world){
 		super.update();
 	}
+
 	public void draw(SpriteBatch batch){
 		sprites[stage].setPosition(X, Y);
 		sprites[stage].draw(batch);
