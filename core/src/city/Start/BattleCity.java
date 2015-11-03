@@ -87,6 +87,7 @@ public class BattleCity extends Game {
 		}
 	}
 
+	@Deprecated
 	public static void ReloadResources(BattleCity city){
 		try{
 			FileInputStream ff = new FileInputStream(Configs+"settings.json");
