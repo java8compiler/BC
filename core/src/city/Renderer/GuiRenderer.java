@@ -2,7 +2,9 @@ package city.Renderer;
 
 import city.Loaders.TextureLoader;
 import city.Screens.GameContainer;
+import city.Utils.Pos;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -15,6 +17,9 @@ public class GuiRenderer {
 	private GameContainer gc;
 	private ShapeRenderer r;
 	private BitmapFont font;
+	public boolean Shop;
+	private HealthRenderer healthRenderer;
+	private ShopRenderer shopRenderer;
 
 	private int hX, hY;
 
@@ -22,40 +27,28 @@ public class GuiRenderer {
 		this.gc = gc;
 		r = new ShapeRenderer();
 		font = new BitmapFont();
+		healthRenderer = new HealthRenderer();
+		shopRenderer = new ShopRenderer(new Pos(100, 100), 5, 5);
+		Shop = false;
 	}
 
 	public void renderer(SpriteBatch batch) throws Exception {
 		hX = 100;
 		hY = 100;
-		float zoom = gc.camera.zoom;
-		gc.camera.zoom = 1;
-		gc.camera.update();
-		batch.setProjectionMatrix(gc.camera.combined);
-		Vector3 fpsPos = gc.camera.unproject(new Vector3(0, 0, 0));
-		font.draw(batch, "FPS" + Gdx.graphics.getFramesPerSecond(), fpsPos.x, fpsPos.y);
+		font.draw(batch, "FPS" + Gdx.graphics.getFramesPerSecond(), 0, 0);
+		healthRenderer.render(gc);
+		//Shop
 
-		float health = gc.world.getPlayer().getHealth();
-		for (int i = 0; i <= gc.world.getPlayer().getHealth(); i++) {
-			Vector3 pos = gc.camera.unproject(new Vector3(hX, hY, 0));
-			if(health >= 1){
-				TextureLoader.health.setScale(3, 3);
-				TextureLoader.health.setPosition(pos.x, pos.y);
-				TextureLoader.health.draw(batch);
-				hX += 50;
-			}else{
-				if(health < 1 && health > 0){
-					TextureLoader.halfHealth.setScale(3, 3);
-					TextureLoader.halfHealth.setPosition(pos.x, pos.y);
-					TextureLoader.halfHealth.draw(batch);
-				}
-
-			}
-			health--;
+		if(Shop){
+			shopRenderer.render(batch);
 		}
-
-		gc.camera.zoom = zoom;
-		gc.camera.update();
 	}
+
+	public void Click(int button, int X, int Y){}
+
+	public void Move(int X, int Y){}
+
+	public  void Drag(int X, int Y){}
 	
 	public void drawInTile(int x, int y) throws Exception{
 		r.setProjectionMatrix(gc.camera.combined);

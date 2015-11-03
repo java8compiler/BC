@@ -7,6 +7,7 @@ import city.Start.BattleCity;
 import city.Utils.Settings;
 import city.World.World;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -22,7 +23,8 @@ public class GameContainer implements Screen,InputProcessor{
 	public GuiRenderer guiRenderer;
 	public EffectsRenderer effectsRenderer;
 	public BattleCity city;
-	public static SpriteBatch batch = BattleCity.batch;
+	public static SpriteBatch Worldbatch = BattleCity.WorldBatch;
+	public static SpriteBatch Screenbatch = BattleCity.ScreenBatch;
 	public static ShapeRenderer shrender = BattleCity.shrender;
 
 	public GameContainer(BattleCity city) throws Exception{
@@ -51,20 +53,25 @@ public class GameContainer implements Screen,InputProcessor{
 
 			//Set Matrix
 			shrender.setProjectionMatrix(camera.combined);
-			batch.setProjectionMatrix(camera.combined);
+			Worldbatch.setProjectionMatrix(camera.combined);
 
 			//Renderer begin
 			shrender.begin(ShapeType.Line);
-			batch.begin();
+
+			Worldbatch.begin();
 
 			//Render world, effects, gui
-			worldRenderer.renderer(batch, shrender);
-			effectsRenderer.renderer(batch);
-			guiRenderer.renderer(batch);
+			worldRenderer.renderer(Worldbatch, shrender);
+			effectsRenderer.renderer(Worldbatch);
 
 			//Renderer end
-			batch.end();
+			Worldbatch.end();
 			shrender.end();
+
+			Screenbatch.begin();
+			guiRenderer.renderer(Screenbatch);
+			Screenbatch.end();
+
 			effectsRenderer.update();
 
 			//World update
@@ -106,6 +113,10 @@ public class GameContainer implements Screen,InputProcessor{
 		if(keycode == 131){
 			city.setScreen(BattleCity.menu);
 			Gdx.input.setInputProcessor(BattleCity.menu);
+			return false;
+		}
+		if(keycode == Input.Keys.S){
+			guiRenderer.Shop = !guiRenderer.Shop;
 		}
 		return false;
 	}
@@ -124,6 +135,7 @@ public class GameContainer implements Screen,InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		guiRenderer.Click(button, screenX, screenX);
 		// TODO Auto-generated method stub
 		return false;
 	}

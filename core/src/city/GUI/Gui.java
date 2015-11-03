@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Gui {
     private ArrayList<Component> components;
     private Component selectComponent;
+    private SpriteBatch batch;
 
     public Gui( ){
         components = new ArrayList<Component>();

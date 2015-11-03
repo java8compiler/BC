@@ -53,4 +53,11 @@ public class TButton extends Component {
 	public String getText(){
 		return this.text;
 	}
+
+	public void setText(String text){
+		this.text = text;
+		Rectangle bound = new Rectangle(getX(), getY()-BattleCity.glyphLayout.height, BattleCity.glyphLayout.width, BattleCity.glyphLayout.height);
+		//System.out.println(bound.getX()+" "+bound.getY()+" "+bound.getWidth()+" "+bound.getHeight());
+		this.setBound(bound);
+	}
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class TextureLoader {
 	public static Texture main;
+	public static Sprite Slot;
 	public static Sprite null_tile;
 	public static Sprite brick;
 	public static Sprite stone;
@@ -54,6 +55,7 @@ public class TextureLoader {
 		MainBoard = Load(0, 0, 188, 68);
 		health = new Sprite(new Texture(BattleCity.Assets+"health.png"));
 		halfHealth = new Sprite(new Texture(BattleCity.Assets+"half-health.png"));
+		Slot = new Sprite(new Texture(BattleCity.Assets+"slot.png"));
 	}
 	
 	public static Sprite Load(int x, int y, int w, int h){

@@ -20,11 +20,13 @@ public class MenuScreen implements Screen, InputProcessor{
 	private BattleCity city;
 	private GameContainer container;
 	private LevelSelectScreen selectScreen;
+	private OptionsScreen optionsScreen;
 
 	public MenuScreen(BattleCity c) throws Exception{
 		this.city = c;
 		container = new GameContainer(c);
 		selectScreen = new LevelSelectScreen(c, container ,this);
+		optionsScreen = new OptionsScreen(c);
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		gui = new Gui();
 		camera.zoom = 0.8f;
@@ -130,12 +132,12 @@ public class MenuScreen implements Screen, InputProcessor{
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update();
-		BattleCity.batch.setProjectionMatrix(camera.combined);
-		BattleCity.batch.begin();
+		BattleCity.WorldBatch.setProjectionMatrix(camera.combined);
+		BattleCity.WorldBatch.begin();
 		TextureLoader.MainBoard.setPosition(-80, 150);
-		TextureLoader.MainBoard.draw(BattleCity.batch);
-		gui.renderer(BattleCity.batch);
-		BattleCity.batch.end();
+		TextureLoader.MainBoard.draw(BattleCity.WorldBatch);
+		gui.renderer(BattleCity.WorldBatch);
+		BattleCity.WorldBatch.end();
 	}
 
 	@Override

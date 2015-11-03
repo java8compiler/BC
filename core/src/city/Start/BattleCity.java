@@ -18,7 +18,8 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 public class BattleCity extends Game {
-	public static SpriteBatch batch;
+	public static SpriteBatch WorldBatch;
+	public static SpriteBatch ScreenBatch;
 	public static ShapeRenderer shrender;
 	public static MenuScreen menu;
 	public static GlyphLayout glyphLayout;
@@ -54,7 +55,8 @@ public class BattleCity extends Game {
 			glyphLayout = new GlyphLayout();
 
 			//Init Renderer
-			batch = new SpriteBatch();
+			WorldBatch = new SpriteBatch();
+			ScreenBatch = new SpriteBatch();
 			shrender = new ShapeRenderer();
 
 			//Set Screen

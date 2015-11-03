@@ -16,9 +16,9 @@ public class MultiPlayerScreen implements Screen{
 
     @Override
     public void render(float delta) {
-        BattleCity.batch.begin();
+        BattleCity.WorldBatch.begin();
 
-        BattleCity.batch.end();
+        BattleCity.WorldBatch.end();
     }
 
     @Override

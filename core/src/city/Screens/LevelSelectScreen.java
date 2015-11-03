@@ -85,10 +85,10 @@ public class LevelSelectScreen implements Screen, InputProcessor {
                 camera.update();
             }
         }
-        BattleCity.batch.setProjectionMatrix(camera.combined);
-        BattleCity.batch.begin();
-        gui.renderer(BattleCity.batch);
-        BattleCity.batch.end();
+        BattleCity.WorldBatch.setProjectionMatrix(camera.combined);
+        BattleCity.WorldBatch.begin();
+        gui.renderer(BattleCity.WorldBatch);
+        BattleCity.WorldBatch.end();
     }
 
     @Override
