@@ -1,4 +1,4 @@
-package Tiles;
+package city.Tiles;
 
 public class Tile {
 	protected int x,y,id;

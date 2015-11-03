@@ -1,5 +1,6 @@
-package city;
+package city.Start;
 
+import city.Animation.AnimationList;
 import city.Json.JSONObject;
 import city.Loaders.SoundLoader;
 import city.Loaders.TextureLoader;
@@ -49,6 +50,7 @@ public class BattleCity extends Game {
 			//Loading Resources
 			new TextureLoader();
 			new SoundLoader();
+			new AnimationList();
 			glyphLayout = new GlyphLayout();
 
 			//Init Renderer

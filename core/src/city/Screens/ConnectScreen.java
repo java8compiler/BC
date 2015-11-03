@@ -1,16 +1,10 @@
 package city.Screens;
 
 
-import city.BattleCity;
-import city.Net.Connection;
-import city.Net.MultiPlayerScreen;
+import city.Start.BattleCity;
 import com.badlogic.gdx.Gdx;
 
 import javax.swing.*;
-import javax.swing.Action;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
-import java.net.Socket;
 
 public class ConnectScreen extends JFrame{
     private JTextField ip;

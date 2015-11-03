@@ -1,6 +1,6 @@
 package city.Loaders;
 
-import city.BattleCity;
+import city.Start.BattleCity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

@@ -1,4 +1,4 @@
-package city;
+package city.Utils;
 
 public class Pos {
 	public float X, Y;

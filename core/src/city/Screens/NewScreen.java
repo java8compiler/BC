@@ -2,7 +2,7 @@ package city.Screens;
 
 import java.io.File;
 
-import city.BattleCity;
+import city.Start.BattleCity;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;

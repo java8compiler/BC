@@ -1,6 +1,6 @@
 package city.Net;
 
-import city.BattleCity;
+import city.Start.BattleCity;
 import com.badlogic.gdx.Screen;
 
 public class MultiPlayerScreen implements Screen{

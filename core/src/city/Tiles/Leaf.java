@@ -1,4 +1,4 @@
-package Tiles;
+package city.Tiles;
 
 public class Leaf extends Tile{
 

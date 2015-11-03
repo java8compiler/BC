@@ -1,4 +1,4 @@
-package GUI;
+package city.GUI;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

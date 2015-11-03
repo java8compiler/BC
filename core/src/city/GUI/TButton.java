@@ -1,6 +1,6 @@
-package GUI;
+package city.GUI;
 
-import city.BattleCity;
+import city.Start.BattleCity;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;

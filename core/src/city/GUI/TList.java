@@ -1,4 +1,4 @@
-package GUI;
+package city.GUI;
 
 import java.util.ArrayList;
 

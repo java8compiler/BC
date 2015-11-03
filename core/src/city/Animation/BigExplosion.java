@@ -1,14 +1,13 @@
 package city.Animation;
 
-import city.Loaders.TextureLoader;
-import city.Pos;
-import city.World;
+import city.Utils.Pos;
+import city.World.World;
 
 public class BigExplosion extends Effects {
     private byte size;
 
     public BigExplosion(float X, float Y, byte size){
-        super(X-8, Y-6, 50, TextureLoader.big_exp_1, TextureLoader.big_exp_2);
+        super(X-8, Y-6, 50, AnimationList.BigExplosion);
         this.size = size;
     }
 

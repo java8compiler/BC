@@ -29,9 +29,8 @@ public class TimerStack {
             }
         }
         long delta = System.currentTimeMillis()-time;
-        System.out.println(delta);
         if(delta > maxDelta){
-            System.out.println("TimeStack>warning<Time out.");
+            System.out.println("TimeStack>warning<Time out. "+delta+" ms");
         }
     }
 }

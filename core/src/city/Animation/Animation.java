@@ -1,26 +1,26 @@
 package city.Animation;
 
 public class Animation {
-    private long period;
-    private long lastTime;
-    private int maxStage;
-    protected int stage = 0;
+    protected long period;
+    protected long lastTime;
+    protected Frames frames;
     public boolean Live = true;
 
 
-    public Animation(long period, int maxStage){
+    public Animation(Frames frames, long period){
         this.period = period;
-        this.maxStage = maxStage-1;
         lastTime = System.currentTimeMillis();
+        this.frames = frames;
     }
 
     protected void update(){
         if(System.currentTimeMillis()-lastTime >= period){
             lastTime = System.currentTimeMillis();
-            if(stage >= maxStage){
+            if(!frames.hasNext()){
+                frames.end();
                 Live = false;
             }else {
-                stage++;
+                frames.next();
                 Stage();
             }
         }

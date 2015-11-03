@@ -1,11 +1,13 @@
-package city;
+package city.Renderer;
 
 import java.util.ArrayList;
 
-import Tiles.Tile;
+import city.World.Bullet;
+import city.Tiles.Tile;
 
 import city.Entities.Entity;
 import city.Loaders.TextureLoader;
+import city.World.World;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 

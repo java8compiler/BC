@@ -2,7 +2,8 @@ package city.Loaders;
 
 import java.io.File;
 
-import city.BattleCity;
+import city.Annotations.PreLoad;
+import city.Start.BattleCity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
@@ -12,6 +13,7 @@ public class SoundLoader {
 	public static Sound explosion;
 	public static float Volume;
 
+	@PreLoad
 	public SoundLoader() throws Exception{
 		shoot = Load("Shoot.wav");
 		explosion = Load("Explosion.wav");

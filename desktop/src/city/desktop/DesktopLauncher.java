@@ -3,7 +3,7 @@ package city.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-import city.BattleCity;
+import city.Start.BattleCity;
 import city.Utils.Settings;
 
 public class DesktopLauncher {

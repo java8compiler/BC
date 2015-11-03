@@ -1,7 +1,8 @@
-package city;
-import Tiles.*;
+package city.World;
+import city.Tiles.*;
 import city.Entities.Entity;
 import city.Screens.GameContainer;
+import city.Utils.Pos;
 import city.Utils.Timer;
 import city.Utils.TimerStack;
 

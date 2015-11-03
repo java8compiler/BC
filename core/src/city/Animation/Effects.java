@@ -1,21 +1,15 @@
 package city.Animation;
 
-import city.World;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import city.World.World;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Effects extends Animation {
 	public float X,Y;
-	private Sprite[] sprites;
 	
-	public Effects(float X, float Y, long period, Sprite... sprites){
-		super(period, sprites.length);
+	public Effects(float X, float Y, long period, Frames frames){
+		super(frames, period);
 		this.X = X;
 		this.Y = Y;
-		if(sprites.length == 0){
-			throw new ArrayStoreException("Sprites null");
-		}
-		this.sprites = sprites;
 	}
 	
 	public void update(World world){
@@ -23,15 +17,15 @@ public class Effects extends Animation {
 	}
 
 	public void draw(SpriteBatch batch){
-		sprites[stage].setPosition(X, Y);
-		sprites[stage].draw(batch);
+		frames.now().setPosition(X, Y);
+		frames.now().draw(batch);
 	}
 
 	@Override
 	protected void Stage() {
-		if(stage > 0){
-			float x = sprites[stage].getWidth()-sprites[stage-1].getWidth();
-			float y = sprites[stage].getHeight()-sprites[stage-1].getHeight();
+		if(frames.getFrame() > 0){
+			float x = frames.now().getWidth()-frames.getSpriteToFrame(frames.getFrame()-1).getWidth();
+			float y = frames.now().getHeight()-frames.getSpriteToFrame(frames.getFrame()-1).getHeight();
 			X -= x/2;
 			Y -= y/2;
 		}

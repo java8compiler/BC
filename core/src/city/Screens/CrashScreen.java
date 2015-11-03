@@ -1,10 +1,8 @@
 package city.Screens;
 
-import city.BattleCity;
+import city.Start.BattleCity;
 import city.Loaders.TextureLoader;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class CrashScreen implements Screen {
     public CrashScreen(){
@@ -16,8 +14,8 @@ public class CrashScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        BattleCity.batch.begin();
-        BattleCity.batch.draw(TextureLoader.crash, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        if(!BattleCity.batch.isDrawing()) BattleCity.batch.begin();
+        BattleCity.batch.draw(TextureLoader.crash, -200, -200, 400, 400);
         BattleCity.batch.end();
     }
 

@@ -1,4 +1,4 @@
-package city;
+package city.Renderer;
 
 import java.util.ArrayList;
 

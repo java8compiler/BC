@@ -1,9 +1,11 @@
-package city;
+package city.World;
 
+import city.Start.BattleCity;
 import city.Loaders.SoundLoader;
 import city.Loaders.TextureLoader;
 import city.Screens.GameContainer;
 import city.Utils.Operation;
+import city.Utils.Pos;
 import city.Utils.Timer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -60,7 +62,8 @@ public class Player {
 			}));
 		}
 		gc.camera.position.set(X, Y, 0);
-		
+
+		//TODO Refactoring
 		pos1 = new Pos(X, Y); pos1.TilePos();
 		pos2 = new Pos(X, Y+w); pos2.TilePos();
 		pos3 = new Pos(X+w, Y+w); pos3.TilePos();

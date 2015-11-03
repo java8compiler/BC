@@ -1,7 +1,11 @@
 package city.Screens;
 
-import city.*;
+import city.Renderer.EffectsRenderer;
+import city.Renderer.GuiRenderer;
+import city.Renderer.WorldRenderer;
+import city.Start.BattleCity;
 import city.Utils.Settings;
+import city.World.World;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;

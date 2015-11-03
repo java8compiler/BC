@@ -1,8 +1,8 @@
 package city.Net;
 
 
-import Tiles.Tile;
-import city.Player;
+import city.Tiles.Tile;
+import city.World.Player;
 
 public class NetworkWorld {
     public Tile[][] tiles;

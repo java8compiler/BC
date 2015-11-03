@@ -1,8 +1,11 @@
-package city;
+package city.World;
 
-import Tiles.Tile;
+import city.Start.BattleCity;
+import city.Renderer.EffectsRenderer;
+import city.Tiles.Tile;
 
 import city.Loaders.SoundLoader;
+import city.Utils.Pos;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Bullet {

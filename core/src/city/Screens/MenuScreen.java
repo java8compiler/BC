@@ -1,10 +1,10 @@
 package city.Screens;
 
-import GUI.Action;
-import GUI.Component;
-import GUI.Gui;
-import GUI.TButton;
-import city.BattleCity;
+import city.GUI.Action;
+import city.GUI.Component;
+import city.GUI.Gui;
+import city.GUI.TButton;
+import city.Start.BattleCity;
 import city.Loaders.TextureLoader;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -28,12 +28,12 @@ public class MenuScreen implements Screen, InputProcessor{
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		gui = new Gui();
 		camera.zoom = 0.8f;
-		RESUME = new GUI.TButton(0, 100, "Resume");
+		RESUME = new city.GUI.TButton(0, 100, "Resume");
 		RESUME.setVisible(false);
-		NEW = new GUI.TButton(0, 80, "New");
-		SAVE = new GUI.TButton(0, 60, "Save");
-		OPTIONS = new GUI.TButton(0, 40, "Options");
-		EXIT = new GUI.TButton(0, 20, "Exit");
+		NEW = new city.GUI.TButton(0, 80, "New");
+		SAVE = new city.GUI.TButton(0, 60, "Save");
+		OPTIONS = new city.GUI.TButton(0, 40, "Options");
+		EXIT = new city.GUI.TButton(0, 20, "Exit");
 		RESUME.setAction(new Action() {
 			@Override
 			public void action(Component component) {

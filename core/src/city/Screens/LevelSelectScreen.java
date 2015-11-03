@@ -1,10 +1,10 @@
 package city.Screens;
 
-import GUI.Action;
-import GUI.Component;
-import GUI.Gui;
-import GUI.TButton;
-import city.BattleCity;
+import city.GUI.Action;
+import city.GUI.Component;
+import city.GUI.Gui;
+import city.GUI.TButton;
+import city.Start.BattleCity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;

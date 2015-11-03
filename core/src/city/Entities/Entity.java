@@ -1,7 +1,7 @@
 package city.Entities;
 
-import city.Pos;
-import city.World;
+import city.Utils.Pos;
+import city.World.World;
 
 public class Entity {
     private Pos pos;
