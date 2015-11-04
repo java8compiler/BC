@@ -16,26 +16,29 @@ import com.badlogic.gdx.math.Vector3;
 public class MenuScreen implements Screen, InputProcessor{
 	private OrthographicCamera camera;
 	private Gui gui;
-	private TButton RESUME, NEW, SAVE, OPTIONS, EXIT;
+	private TButton RESUME, NEW, SAVE, NET, OPTIONS, EXIT;
 	private BattleCity city;
 	private GameContainer container;
 	private LevelSelectScreen selectScreen;
 	private OptionsScreen optionsScreen;
+	private ConnectToServer connectToServer;
 
 	public MenuScreen(BattleCity c) throws Exception{
 		this.city = c;
 		container = new GameContainer(c);
 		selectScreen = new LevelSelectScreen(c, container ,this);
+		connectToServer = new ConnectToServer(c, this);
 		optionsScreen = new OptionsScreen(c);
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		gui = new Gui();
 		camera.zoom = 0.8f;
-		RESUME = new city.GUI.TButton(0, 100, "Resume");
+		RESUME = new city.GUI.TButton("Resume", 0, 100);
 		RESUME.setVisible(false);
-		NEW = new city.GUI.TButton(0, 80, "New");
-		SAVE = new city.GUI.TButton(0, 60, "Save");
-		OPTIONS = new city.GUI.TButton(0, 40, "Options");
-		EXIT = new city.GUI.TButton(0, 20, "Exit");
+		NEW = new TButton("New",0, 80);
+		SAVE = new TButton("Save", 0, 60);
+		NET = new TButton("Net", 0, 40);
+		OPTIONS = new TButton("Options", 0, 20);
+		EXIT = new TButton("Exit", 0, 0);
 		RESUME.setAction(new Action() {
 			@Override
 			public void action(Component component) {
@@ -57,6 +60,13 @@ public class MenuScreen implements Screen, InputProcessor{
 				System.out.println("SAVE");
 			}
 		});
+		NET.setAction(new Action() {
+			@Override
+			public void action(Component component) {
+				city.setScreen(connectToServer);
+				Gdx.input.setInputProcessor(connectToServer);
+			}
+		});
 		OPTIONS.setAction(new Action() {
 			@Override
 			public void action(Component component) {
@@ -72,6 +82,7 @@ public class MenuScreen implements Screen, InputProcessor{
 		gui.add(RESUME);
 		gui.add(NEW);
 		gui.add(SAVE);
+		gui.add(NET);
 		gui.add(OPTIONS);
 		gui.add(EXIT);
 	}

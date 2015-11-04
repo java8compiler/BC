@@ -18,7 +18,7 @@ public class OptionsScreen implements Screen, InputProcessor {
     public OptionsScreen(BattleCity city){
         gui = new Gui();
         this.city = city;
-        TButton Volume = new TButton(100, 100, SoundLoader.Volume+"%");
+        TButton Volume = new TButton(SoundLoader.Volume+"%", 100, 100);
         Volume.setAction(new Action() {
             @Override
             public void action(Component component) {

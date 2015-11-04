@@ -1,16 +1,11 @@
 package city.Net;
 
+import city.World.Player;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class NetworkPlayer {
-    private int X,Y;
+public class NetworkPlayer extends Player {
 
     public NetworkPlayer(int x, int y){
-        X = x;
-        Y = y;
-    }
-
-    public void renderer(SpriteBatch batch){
-
+        super(x, y, null);
     }
 }

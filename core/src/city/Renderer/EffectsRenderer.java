@@ -6,14 +6,13 @@ import city.Animation.BigExplosion;
 import city.Animation.Effects;
 import city.Animation.TileExplosion;
 import city.Screens.GameContainer;
+import city.World.World;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class EffectsRenderer {
-	private GameContainer gc;
 	private ArrayList<Effects> effects;
 	
-	public EffectsRenderer(GameContainer gc){
-		this.gc = gc;
+	public EffectsRenderer(){
 		effects = new ArrayList<Effects>();
 	}
 	
@@ -23,9 +22,9 @@ public class EffectsRenderer {
 		}
 	}
 	
-	public void update(){
+	public void update(World world){
 		for(int i = 0;i<effects.size();i++){
-			effects.get(i).update(gc.world);
+			effects.get(i).update(world);
 			if(!effects.get(i).Live) effects.remove(i);
 		}
 	}

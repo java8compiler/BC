@@ -9,13 +9,10 @@ public class TButton extends Component {
 	private String text;
 	private boolean Hover;
 
-	public TButton(float X, float Y, String text) {
+	public TButton(String text, float X, float Y) {
 		super(X, Y, true);
 		this.text = text;
-		BattleCity.glyphLayout.setText(font, text);
-		Rectangle bound = new Rectangle(X, Y-BattleCity.glyphLayout.height, BattleCity.glyphLayout.width, BattleCity.glyphLayout.height);
-		//System.out.println(bound.getX()+" "+bound.getY()+" "+bound.getWidth()+" "+bound.getHeight());
-		this.setBound(bound);
+		setText(text);
 	}
 
 	public void render(SpriteBatch batch){
@@ -56,6 +53,7 @@ public class TButton extends Component {
 
 	public void setText(String text){
 		this.text = text;
+		BattleCity.glyphLayout.setText(font, text);
 		Rectangle bound = new Rectangle(getX(), getY()-BattleCity.glyphLayout.height, BattleCity.glyphLayout.width, BattleCity.glyphLayout.height);
 		//System.out.println(bound.getX()+" "+bound.getY()+" "+bound.getWidth()+" "+bound.getHeight());
 		this.setBound(bound);

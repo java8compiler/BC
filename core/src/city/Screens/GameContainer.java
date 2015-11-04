@@ -30,10 +30,10 @@ public class GameContainer implements Screen,InputProcessor{
 
 	public GameContainer(BattleCity city) throws Exception{
 		this.city = city;
-		world = new World(100, 100, this);
+		world = new World(100, 100, this, false);
 		worldRenderer = new WorldRenderer(world);
 		guiRenderer = new GuiRenderer(this);
-		effectsRenderer = new EffectsRenderer(this);
+		effectsRenderer = new EffectsRenderer();
 		camera = new OrthographicCamera(Settings.WIDTH, Settings.HEIGHT);
 		camera.zoom = 0.3f;
 		camera.position.set(0, 0, 0);
@@ -70,8 +70,9 @@ public class GameContainer implements Screen,InputProcessor{
 		shrender.begin(ShapeType.Line);
 		worldRenderer.renderer(Worldbatch, shrender);
 		effectsRenderer.renderer(Worldbatch);
-		shrender.end();
 		Worldbatch.end();
+		shrender.end();
+
 	}
 
 	private void screenRender() throws Exception{
@@ -85,7 +86,7 @@ public class GameContainer implements Screen,InputProcessor{
 
 	private void update() throws Exception{
 		world.update();
-		effectsRenderer.update();
+		effectsRenderer.update(world);
 	}
 
 	@Override

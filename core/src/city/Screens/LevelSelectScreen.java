@@ -53,7 +53,7 @@ public class LevelSelectScreen implements Screen, InputProcessor {
         for (int i = 0; i < file.list().length; i++){
             if(file.list()[i].matches("\\w+\\.level") && (new FileInputStream(BattleCity.Levels+file.list()[i]).available()) == 10000){
                 BattleCity.glyphLayout.setText(TButton.font, file.list()[i]);
-                TButton button = new TButton(-3-BattleCity.glyphLayout.width/2, Y, file.list()[i]);
+                TButton button = new TButton(file.list()[i], -3-BattleCity.glyphLayout.width/2, Y);
                 button.setAction(action);
                 gui.add(button);
                 Y += button.getBound().getHeight()+10;

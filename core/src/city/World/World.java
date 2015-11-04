@@ -1,4 +1,5 @@
 package city.World;
+import city.Exception.WorldNegativeSizeException;
 import city.Tiles.*;
 import city.Entities.Entity;
 import city.Screens.GameContainer;
@@ -12,25 +13,33 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class World {
-	private Tile[][] tiles;
-	private int sizeX, sizeY;
+	protected Tile[][] tiles;
+	protected int sizeX, sizeY;
 	private Player player;
 	private GameContainer gc;
-	private ArrayList<Bullet> bullets;
+	protected ArrayList<Bullet> bullets;
 	private ArrayList<Entity> entities;
-	private Random random;
-	private TimerStack timerStack;
+	protected Random random;
+	protected TimerStack timerStack;
 	
-	public World(int sizeX, int sizeY, GameContainer gc){
-		bullets = new ArrayList<Bullet>();
-		entities = new ArrayList<Entity>();
-		random = new Random();
-		timerStack = new TimerStack();
-		this.gc = gc;
+	public World(int sizeX, int sizeY, GameContainer gc, boolean net) throws Exception{
+		if(sizeX < 0){
+			throw new WorldNegativeSizeException("sizeX < 0");
+		}
+		if(sizeY < 0){
+			throw new WorldNegativeSizeException("sizeY < 0");
+		}
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
 		tiles = new Tile[sizeX][sizeY];
-		player = new Player(40, 40, gc);
+		bullets = new ArrayList<Bullet>();
+		timerStack = new TimerStack();
+		random = new Random();
+		entities = new ArrayList<Entity>();
+		if(!net){
+			player = new Player(40, 40, gc);
+			this.gc = gc;
+		}
 	}
 	
 	public void generate() throws Exception{
@@ -75,6 +84,26 @@ public class World {
 					if(data[i] == 2) tile = new Stone(x, y); else
 					if(data[i] == 3) tile = new Leaf(x, y); else
 					if(data[i] == 4) tile = new Water(x, y);
+					tiles[x][y] = tile;
+					i++;
+				}
+			}
+		}catch (Exception e){
+			gc.city.Crash(e);
+		}
+	}
+
+	public void loadWorld(byte[] bytes){
+		try{
+			Tile tile = null;
+			int i = 0;
+			for(int x = 0; x < 100; x++){
+				for(int y = 0; y < 100; y++){
+					tile = new Tile(x, y, 0, false, false, false);
+					if(bytes[i] == 1) tile = new Brick(x, y); else
+					if(bytes[i] == 2) tile = new Stone(x, y); else
+					if(bytes[i] == 3) tile = new Leaf(x, y); else
+					if(bytes[i] == 4) tile = new Water(x, y);
 					tiles[x][y] = tile;
 					i++;
 				}
