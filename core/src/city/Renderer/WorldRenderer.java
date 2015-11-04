@@ -7,6 +7,7 @@ import city.Tiles.Tile;
 
 import city.Entities.Entity;
 import city.Loaders.TextureLoader;
+import city.World.Player;
 import city.World.World;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -57,7 +58,8 @@ public class WorldRenderer {
 			}
 		}
 
-		world.getPlayer().renderer(batch);
+		Player player = world.getPlayer();
+		player.renderer(batch);
 		ArrayList<Bullet> bullets = world.getBulletList();
 		for(int i = 0; i < bullets.size(); i++){
 			bullets.get(i).draw(shrender);

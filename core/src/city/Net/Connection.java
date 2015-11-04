@@ -44,12 +44,13 @@ public class Connection extends Thread {
                     }
                     if (id == 2){
                         int PlayerId = in.read();
+                        int direction = in.read();
                         byte[] bytes = new byte[4];
                         in.read(bytes);
                         int X = getInt(bytes);
                         in.read(bytes);
                         int Y = getInt(bytes);
-                        push(new PacketSetPlayerCoords((byte) PlayerId, X, Y));
+                        push(new PacketSetPlayerCoords((byte) PlayerId, (byte) direction, X, Y));
                     }
                     if (id == 3){
                         int youId = in.read();

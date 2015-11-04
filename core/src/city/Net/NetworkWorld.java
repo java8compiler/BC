@@ -17,6 +17,7 @@ public class NetworkWorld extends World {
         super(sizeX, sizeY, null, true);
         this.connection = connection;
         this.netScreen = netScreen;
+        player = new NetworkPlayer(0, 0);
     }
 
     @Override

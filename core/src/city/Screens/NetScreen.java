@@ -109,12 +109,14 @@ public class NetScreen implements Screen, InputProcessor{
                    System.out.println(packet.id);
                }
                if(packet instanceof PacketSetPlayerCoords){
-                   System.out.println(packet.id);
+                   PacketSetPlayerCoords setPlayerCoords = (PacketSetPlayerCoords)packet;
+                   world.getPlayer().direction = setPlayerCoords.direction;
+                   world.getPlayer().X = setPlayerCoords.X;
+                   world.getPlayer().Y = setPlayerCoords.Y;
                }
                if (packet instanceof PacketYouId){
                    PacketYouId packetYouId = (PacketYouId)packet;
                    MyId = packetYouId.id;
-                   System.out.println("My id="+MyId);
                }
            }
 
