@@ -21,6 +21,7 @@ public class BattleCity extends Game {
 	public static SpriteBatch WorldBatch;
 	public static SpriteBatch ScreenBatch;
 	public static ShapeRenderer shrender;
+	public static ShapeRenderer ScreenRenderer;
 	public static MenuScreen menu;
 	public static GlyphLayout glyphLayout;
 	public static JSONObject jsonObject;
@@ -58,6 +59,7 @@ public class BattleCity extends Game {
 			WorldBatch = new SpriteBatch();
 			ScreenBatch = new SpriteBatch();
 			shrender = new ShapeRenderer();
+			ScreenRenderer = new ShapeRenderer();
 
 			//Set Screen
 			menu = new MenuScreen(this);

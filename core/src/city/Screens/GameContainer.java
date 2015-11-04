@@ -26,6 +26,7 @@ public class GameContainer implements Screen,InputProcessor{
 	public static SpriteBatch Worldbatch = BattleCity.WorldBatch;
 	public static SpriteBatch Screenbatch = BattleCity.ScreenBatch;
 	public static ShapeRenderer shrender = BattleCity.shrender;
+	public static ShapeRenderer ScreenRender = BattleCity.ScreenRenderer;
 
 	public GameContainer(BattleCity city) throws Exception{
 		this.city = city;
@@ -48,37 +49,43 @@ public class GameContainer implements Screen,InputProcessor{
 			Gdx.gl.glClearColor(0, 0, 0, 0);
 			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-			//Camera update
 			camera.update();
+			setMatrix();
+			worldRender();
+			//screenRender();
+			update();
 
-			//Set Matrix
-			shrender.setProjectionMatrix(camera.combined);
-			Worldbatch.setProjectionMatrix(camera.combined);
-
-			//Renderer begin
-			shrender.begin(ShapeType.Line);
-
-			Worldbatch.begin();
-
-			//Render world, effects, gui
-			worldRenderer.renderer(Worldbatch, shrender);
-			effectsRenderer.renderer(Worldbatch);
-
-			//Renderer end
-			Worldbatch.end();
-			shrender.end();
-
-			Screenbatch.begin();
-			guiRenderer.renderer(Screenbatch);
-			Screenbatch.end();
-
-			effectsRenderer.update();
-
-			//World update
-			world.update();
 		}catch (Exception e){
 			city.Crash(e);
 		}
+	}
+
+	private void setMatrix(){
+		shrender.setProjectionMatrix(camera.combined);
+		Worldbatch.setProjectionMatrix(camera.combined);
+	}
+
+	private void worldRender() throws Exception{
+		Worldbatch.begin();
+		shrender.begin(ShapeType.Line);
+		worldRenderer.renderer(Worldbatch, shrender);
+		effectsRenderer.renderer(Worldbatch);
+		shrender.end();
+		Worldbatch.end();
+	}
+
+	private void screenRender() throws Exception{
+		Screenbatch.begin();
+		Screenbatch.end();
+		ScreenRender.begin(ShapeType.Line);
+		guiRenderer.renderer(Screenbatch);
+		ScreenRender.end();
+
+	}
+
+	private void update() throws Exception{
+		world.update();
+		effectsRenderer.update();
 	}
 
 	@Override
