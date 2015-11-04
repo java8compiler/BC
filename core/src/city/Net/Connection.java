@@ -1,9 +1,6 @@
 package city.Net;
 
-import city.Net.Packet.Packet;
-import city.Net.Packet.PacketLoadLevel;
-import city.Net.Packet.PacketSetPlayerCoords;
-import city.Net.Packet.PacketYouId;
+import city.Net.Packet.*;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -13,7 +10,7 @@ import java.util.Stack;
 
 public class Connection extends Thread {
     private boolean status;
-    private Socket socket;
+    public Socket socket;
     private InputStream in;
     private OutputStream out;
     private Stack<Packet> packetStack;
@@ -35,13 +32,13 @@ public class Connection extends Thread {
                     int id = in.read();
                     if(id == 0){
                         System.out.println("Status="+id);
-                    }
+                    }else
                     if(id == 1){
                         int len = in.read();
                         byte[] bytes = new byte[len];
                         in.read(bytes);
                         push(new PacketLoadLevel(bytes));
-                    }
+                    }else
                     if (id == 2){
                         System.out.println("setPos");
                         int PlayerId = in.read();
@@ -52,10 +49,27 @@ public class Connection extends Thread {
                         in.read(bytes);
                         int Y = getInt(bytes);
                         push(new PacketSetPlayerCoords((byte) PlayerId, (byte) direction, X, Y));
-                    }
+                    }else
                     if (id == 3){
                         int youId = in.read();
                         push(new PacketYouId((byte)youId));
+                    }else
+                    if (id == 4){
+                        byte status = (byte) in.read();
+                        push(new PacketStatus(status));
+                    }else
+                    if (id == 6){
+                        byte EntityId = (byte) in.read();
+                        byte[] bytes = new byte[4];
+                        in.read(bytes);
+                        int X = getInt(bytes);
+                        in.read(bytes);
+                        int Y = getInt(bytes);
+                        in.read(bytes);
+                        int dx = getInt(bytes);
+                        in.read(bytes);
+                        int dy = getInt(bytes);
+                        push(new PacketCreateEntity(EntityId, X, Y, dx, dy));
                     }
                 }
             }catch (Exception e){}

@@ -2,10 +2,7 @@ package city.Screens;
 
 import city.Net.Connection;
 import city.Net.NetworkWorld;
-import city.Net.Packet.Packet;
-import city.Net.Packet.PacketLoadLevel;
-import city.Net.Packet.PacketSetPlayerCoords;
-import city.Net.Packet.PacketYouId;
+import city.Net.Packet.*;
 import city.Renderer.EffectsRenderer;
 import city.Renderer.WorldRenderer;
 import city.Start.BattleCity;
@@ -100,21 +97,30 @@ public class NetScreen implements Screen, InputProcessor{
 
            world.update();
 
-           Packet packet = connection.pull();
-           if(packet != null){
-               if(packet instanceof Packet){
-               }
-               if(packet instanceof PacketLoadLevel){
-               }
-               if(packet instanceof PacketSetPlayerCoords){
-                   PacketSetPlayerCoords setPlayerCoords = (PacketSetPlayerCoords)packet;
-                   world.getPlayer().direction = setPlayerCoords.direction;
-                   world.getPlayer().X = setPlayerCoords.X;
-                   world.getPlayer().Y = setPlayerCoords.Y;
-               }
-               if (packet instanceof PacketYouId){
-                   PacketYouId packetYouId = (PacketYouId)packet;
-                   MyId = packetYouId.id;
+           while (true){
+               Packet packet = connection.pull();
+               if(packet != null){
+                   if(packet instanceof PacketLoadLevel){
+                       world.loadWorld(((PacketLoadLevel) packet).bytes);
+                   }else
+                   if(packet instanceof PacketSetPlayerCoords){
+                       PacketSetPlayerCoords setPlayerCoords = (PacketSetPlayerCoords)packet;
+                       world.getPlayer().direction = setPlayerCoords.direction;
+                       world.getPlayer().X = setPlayerCoords.X;
+                       world.getPlayer().Y = setPlayerCoords.Y;
+                   }else
+                   if (packet instanceof PacketYouId){
+                       PacketYouId packetYouId = (PacketYouId)packet;
+                       MyId = packetYouId.id;
+                   }else
+                   if (packet instanceof PacketCreateEntity){
+                       PacketCreateEntity entity = (PacketCreateEntity)packet;
+                       switch (entity.id){
+                           case 0: world.CreateBullet(entity.X, entity.Y, entity.dx, entity.dy); break;
+                       }
+                   }
+               }else{
+                   break;
                }
            }
 

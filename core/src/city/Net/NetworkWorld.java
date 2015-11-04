@@ -17,7 +17,7 @@ public class NetworkWorld extends World {
         super(sizeX, sizeY, null, true);
         this.connection = connection;
         this.netScreen = netScreen;
-        player = new NetworkPlayer(0, 0);
+        player = new NetworkPlayer(netScreen, 0, 0);
     }
 
     @Override
@@ -27,6 +27,7 @@ public class NetworkWorld extends World {
 
     @Override
     public void update() throws Exception {
+        player.update();
         for (int i = 0; i < getBulletList().size(); i++){
             getBulletList().get(i).update(this, netScreen.effectsRenderer);
         }
