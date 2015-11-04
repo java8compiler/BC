@@ -103,10 +103,8 @@ public class NetScreen implements Screen, InputProcessor{
            Packet packet = connection.pull();
            if(packet != null){
                if(packet instanceof Packet){
-                   System.out.println(packet.id);
                }
                if(packet instanceof PacketLoadLevel){
-                   System.out.println(packet.id);
                }
                if(packet instanceof PacketSetPlayerCoords){
                    PacketSetPlayerCoords setPlayerCoords = (PacketSetPlayerCoords)packet;

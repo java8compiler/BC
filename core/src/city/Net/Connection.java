@@ -34,7 +34,7 @@ public class Connection extends Thread {
                 if(in.available() > 0){
                     int id = in.read();
                     if(id == 0){
-                        System.out.println("Status="+status);
+                        System.out.println("Status="+id);
                     }
                     if(id == 1){
                         int len = in.read();
@@ -43,6 +43,7 @@ public class Connection extends Thread {
                         push(new PacketLoadLevel(bytes));
                     }
                     if (id == 2){
+                        System.out.println("setPos");
                         int PlayerId = in.read();
                         int direction = in.read();
                         byte[] bytes = new byte[4];
